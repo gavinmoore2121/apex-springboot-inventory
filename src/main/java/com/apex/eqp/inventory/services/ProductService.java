@@ -30,7 +30,11 @@ public class ProductService {
     }
 
     public Collection<Product> getAllProduct() {
-        ProductFilter filter = new ProductFilter(null);
+        ProductFilter filter = new ProductFilter(recalledProductRepository
+                .findAll()
+                .stream()
+                .map(RecalledProduct::getName)
+                .collect(Collectors.toSet()));
 
         return filter.removeRecalledFrom(inventoryRepository.findAll());
     }

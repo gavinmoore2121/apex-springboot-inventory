@@ -74,4 +74,16 @@ class ProductServiceTests {
 
     // Write your tests below
 
+    @Test
+    void shouldGetAllNonRecalledProducts() {
+
+        // invoke
+        ArrayList<Product> retrievedProducts = (ArrayList<Product>) productService.getAllProduct();
+
+        // verify
+        Assertions.assertEquals(2, retrievedProducts.size());
+        // Gum is name of only recalled product in test setup. See resources/data.sql.
+        Assertions.assertFalse(retrievedProducts.stream()
+                .anyMatch(product -> product.getName().equals("gum")));
+    }
 }

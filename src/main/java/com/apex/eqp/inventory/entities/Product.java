@@ -22,6 +22,7 @@ public class Product {
     String name;
     Double price;
     Integer quantity;
+    Boolean recalled;
 
     @Override
     public boolean equals(Object o) {
